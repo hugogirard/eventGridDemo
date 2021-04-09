@@ -30,4 +30,4 @@ resource database 'Microsoft.Sql/servers/databases@2019-06-01-preview' = {
   }
 }
 
-output sqlCnxString string = 'Server=tcp:${server.properties.fullyQualifiedDomainName},1433;Initial Catalog=${dbname};Persist Security Info=False;User ID=${server.properties.administratorLogin};Password=${server.properties.administratorLoginPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
+output sqlCnxString string = 'Server=tcp:${server.properties.fullyQualifiedDomainName},1433;Initial Catalog=${dbname};Persist Security Info=False;User ID=${adminUsername};Password=${adminPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
