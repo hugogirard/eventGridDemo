@@ -1,1 +1,1 @@
-![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fgithub.com%2Fhugogirard%2FeventGridDemo%2Fblob%2Fmain%2Fbicep%2Fmain.json)
