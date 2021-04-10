@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTION_PACKAGE_PATH: '/src/functions'  
+  AZURE_FUNCTION_PACKAGE_PATH: 'src/functions'  
   DOTNET_VERSION: '3.1.407'
 
 jobs:
@@ -28,7 +28,7 @@ jobs:
     - name: 'Resolve Project Dependencies Using Dotnet'
       shell: pwsh
       run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        pushd './${{ env.AZURE_FUNCTION_PACKAGE_PATH }}'
         dotnet build --configuration Release --output ./output
         popd
 
