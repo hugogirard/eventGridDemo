@@ -63,3 +63,5 @@ resource function 'Microsoft.Web/sites@2018-11-01' = {
     clientAffinityEnabled: false
   }
 }
+
+output functionName string = function.name
