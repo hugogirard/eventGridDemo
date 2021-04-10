@@ -43,4 +43,4 @@ jobs:
       id: fa
       with:
         app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+        package: '${{ env.AZURE_FUNCTION_PACKAGE_PATH }}/output'
