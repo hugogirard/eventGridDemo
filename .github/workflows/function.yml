@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTION_PACKAGE_PATH: 'src/functions'  
+  AZURE_FUNCTION_PACKAGE_PATH: '/src/functions'  
   DOTNET_VERSION: '3.1.407'
 
 jobs:
