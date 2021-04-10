@@ -41,7 +41,7 @@ jobs:
           az group create -n ${{ env.RESOURCE_GROUP_NAME }} -l ${{ env.LOCATION }}
 
       - name: Deploy Azure Resources
-        id: deployapim
+        id: deployInfra
         uses: Azure/arm-deploy@v1.0.1
         with:        
           scope: resourcegroup          
@@ -50,4 +50,10 @@ jobs:
           resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}        
           template: bicep/main.json   
           parameters: location=${{ env.LOCATION }} adminUsername=${{ secrets.ADMIN_USERNAME }} adminPassword=${{ secrets.ADMIN_PASSWORD }}
-          deploymentMode: Incremental                 
+          deploymentMode: Incremental
+
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: AZURE_FUNCTIONAPP_NAME
+          value: ${{ steps.deployInfra.outputs.functionName }}
+          pa_token: ${{ secrets.PA_TOKEN }}          

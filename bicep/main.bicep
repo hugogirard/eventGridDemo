@@ -46,3 +46,5 @@ module function 'modules/function/function.bicep' = {
     suffix: suffix
   }
 }
+
+output functionName string = function.outputs.functionName
