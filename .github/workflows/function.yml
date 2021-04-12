@@ -11,6 +11,7 @@ on:
 
 env:
   AZURE_FUNCTION_PACKAGE_PATH: 'src/functions'  
+  RESOURCE_GROUP_NAME: eventgrid-demo-rg
   DOTNET_VERSION: '3.1.407'
 
 jobs:
@@ -29,6 +30,10 @@ jobs:
         $currentPath = (Get-Item -path "HKCU:\Environment" ).GetValue('Path', '', 'DoNotExpandEnvironmentNames')
         if (-not $currentPath.Contains("%USERPROFILE%\.bicep")) { setx PATH ($currentPath + ";%USERPROFILE%\.bicep") }
         if (-not $env:path.Contains($installPath)) { $env:path += ";$installPath" }
+
+    - name: Bicep Build
+      run: |
+        bicep build bicep/event.bicep
 
     - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
       uses: actions/setup-dotnet@v1
@@ -54,3 +59,14 @@ jobs:
       with:
         app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
         package: '${{ env.AZURE_FUNCTION_PACKAGE_PATH }}/output'
+
+    - name: Deploy Event Grid Subs      
+      uses: Azure/arm-deploy@v1.0.1
+      with:        
+        scope: resourcegroup          
+        subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}          
+        region: ${{ env.LOCATION }}        
+        resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}        
+        template: bicep/event.json   
+        parameters: location=${{ env.LOCATION }} functionId=${{ secrets.FUNCTION_ID }} storageId=${{ secrets.STORAGE_ID }} storageName=${{ secrets.STORAGE_NAME }}
+        deploymentMode: Incremental        
