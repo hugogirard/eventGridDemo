@@ -57,3 +57,27 @@ jobs:
           name: AZURE_FUNCTIONAPP_NAME
           value: ${{ steps.deployInfra.outputs.functionName }}
           pa_token: ${{ secrets.PA_TOKEN }}          
+          
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: FUNCTION_NAME
+          value: ${{ steps.deployInfra.outputs.functionName }}
+          pa_token: ${{ secrets.PA_TOKEN }}       
+          
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: FUNCTION_ID
+          value: ${{ steps.deployInfra.outputs.functionId }}
+          pa_token: ${{ secrets.PA_TOKEN }}      
+          
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: STORAGE_ID
+          value: ${{ steps.deployInfra.outputs.storageId }}
+          pa_token: ${{ secrets.PA_TOKEN }}     
+          
+      - uses: gliech/create-github-secret-action@v1
+        with:
+          name: STORAGE_NAME
+          value: ${{ steps.deployInfra.outputs.storageName }}
+          pa_token: ${{ secrets.PA_TOKEN }}            
