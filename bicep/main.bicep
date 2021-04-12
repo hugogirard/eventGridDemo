@@ -47,18 +47,7 @@ module function 'modules/function/function.bicep' = {
   }
 }
 
-module events 'modules/eventGrid/event.bicep' = {
-  name: 'events'
-  dependsOn: [
-    function
-    str
-  ]
-  params: {
-    functionId: function.outputs.functionId
-    location: location
-    storageId: str.outputs.strFileId
-    strName: str.outputs.strFileName
-  }
-}
-
 output functionName string = function.outputs.functionName
+output functionId string = function.outputs.functionId
+output storageId string = str.outputs.strFileId
+output storageName string = str.outputs.strFileName
