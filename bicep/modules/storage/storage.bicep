@@ -17,8 +17,12 @@ resource filestr 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   }
 }
 
-resource containerfile 'Microsoft.Storage/storageAccounts/blobServices/containers@2019-06-01' = {
+resource containerCustomer 'Microsoft.Storage/storageAccounts/blobServices/containers@2019-06-01' = {
   name: '${filestr.name}/default/customer'  
+}
+
+resource containerJob 'Microsoft.Storage/storageAccounts/blobServices/containers@2019-06-01' = {
+  name: '${filestr.name}/default/jobs'  
 }
 
 resource funcstr 'Microsoft.Storage/storageAccounts@2019-06-01' = {

@@ -1,8 +1,10 @@
 param storageId string
 param functionId string
 param location string
+param strName string
 
-var topicName = 'BlobTopic'
+var topicName = '${strName}-${guid(subscription().subscriptionId)}'
+
 
 resource systemTopic 'Microsoft.EventGrid/systemTopics@2020-10-15-preview' = {
   name: topicName
@@ -30,7 +32,18 @@ resource eventSubs 'Microsoft.EventGrid/systemTopics/eventSubscriptions@2020-10-
         'Microsoft.Storage.BlobCreated'
         'Microsoft.Storage.BlobRenamed'
       ]
+      enableAdvancedFilteringOnArrays: true
+      advancedFilters: [
+        {
+          values: [
+            'containers/customer/'
+            'containers/jobs/'
+          ]
+          operatorType: 'StringContains'
+          key: 'Subject'
+        }        
+      ]
     }
-    eventDeliverySchema: 'EventGridSchema'
+    eventDeliverySchema: 'EventGridSchema'    
   }
 }
