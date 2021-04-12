@@ -62,7 +62,7 @@ resource function 'Microsoft.Web/sites@2018-11-01' = {
           value: 'DefaultEndpointsProtocol=https;AccountName=${strFileName};AccountKey=${listKeys(strFileId, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
         }
         {
-          name: 'SqlCnxString'
+          name: 'SqlConnectionString'
           value: sqlCnxString
         }                      
       ]
