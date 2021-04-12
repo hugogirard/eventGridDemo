@@ -31,5 +31,6 @@ resource eventSubs 'Microsoft.EventGrid/systemTopics/eventSubscriptions@2020-10-
         'Microsoft.Storage.BlobRenamed'
       ]
     }
+    eventDeliverySchema: 'EventGridSchema'
   }
 }
