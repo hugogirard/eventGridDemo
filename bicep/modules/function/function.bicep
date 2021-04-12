@@ -65,3 +65,4 @@ resource function 'Microsoft.Web/sites@2018-11-01' = {
 }
 
 output functionName string = function.name
+output functionId string = function.id
