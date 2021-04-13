@@ -65,5 +65,5 @@ jobs:
         region: ${{ env.LOCATION }}        
         resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}        
         template: bicep/event.json   
-        parameters: location=${{ env.LOCATION }} functionId=${{ secrets.FUNCTION_ID }} storageId=${{ secrets.STORAGE_ID }} storageName=${{ secrets.STORAGE_NAME }}
+        parameters: location=${{ env.LOCATION }} functionId=${{ secrets.FUNCTION_ID }} strFileId=${{ secrets.STORAGE_ID }} strName=${{ secrets.STORAGE_NAME }}
         deploymentMode: Incremental        
