@@ -4,12 +4,11 @@ on:
   push:
     branches:
       - "main"
-    paths:
-      - "bicep/**"
-      - ".github/workflows/infra.yml"
     paths-ignore:
       - "bicep/event.bicep"
       - "bicep/modules/eventGrid/**"
+      - ".github/workflows/function.yml"
+      - "scr/**/**"      
   workflow_dispatch:          
 
 env:
