@@ -25,6 +25,10 @@ resource containerJob 'Microsoft.Storage/storageAccounts/blobServices/containers
   name: '${filestr.name}/default/jobs'  
 }
 
+resource containerTmp 'Microsoft.Storage/storageAccounts/blobServices/containers@2019-06-01' = {
+  name: '${filestr.name}/default/tmp'  
+}
+
 resource funcstr 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: 'fnc${suffix}'
   location: location

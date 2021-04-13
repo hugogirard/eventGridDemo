@@ -30,4 +30,15 @@ resource database 'Microsoft.Sql/servers/databases@2019-06-01-preview' = {
   }
 }
 
+resource firewallAzureIps 'Microsoft.Sql/servers/firewallRules@2020-08-01-preview' = {
+  name: '${server.name}/AllowAllWindowsAzureIps'
+  dependsOn: [
+    server  
+  ]
+  properties: {
+    startIpAddress: '0.0.0.0'
+    endIpAddress: '0.0.0.0'
+  }
+}
+
 output sqlCnxString string = 'Server=tcp:${server.properties.fullyQualifiedDomainName},1433;Initial Catalog=${dbname};Persist Security Info=False;User ID=${adminUsername};Password=${adminPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
