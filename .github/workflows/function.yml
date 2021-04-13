@@ -11,7 +11,8 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTION_PACKAGE_PATH: 'src/functions'  
+  AZURE_FUNCTION_PACKAGE_PATH: 'src/functions'
+  LOCATION: eastus
   RESOURCE_GROUP_NAME: eventgrid-demo-rg
   DOTNET_VERSION: '3.1.407'
 
